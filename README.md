@@ -10,6 +10,6 @@ Bigger projects will be in their own repository, but linked in the summary secti
 
     This was the first scRNA-seq I have ever done. I faced lots of memory issues, giving that my notebook didn't have enough RAM to load all data. It was completely done to give me the general idea about what is a single-cell RNA sequence analysis, but was never completely runned because kernel keeped crashing.
 
-2. [Current best practices in single-cell RNA-seq analysis: a tutorial](/2019_best_practices_scRNAseq_tutorial)
+2. [Current best practices in single-cell RNA-seq analysis: a tutorial](/2019_best_practices_scRNAseq_tutorial) **WIP**
 
     This is about a paper publisehd in 2019 about single-cell RNA sequence best practices. Obviously it is not up to date, since I'm currently writing this summary in 2023, but it was a great source of learning.
