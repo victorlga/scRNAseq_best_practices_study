@@ -1,0 +1,1 @@
+All work in this folder is based on the work of Malte D Luecken & Fabian J Theis on "Current best practices in single-cell RNA-seq analysis: a tutorial" (2019). The original paper can be found [here](https://www.embopress.org/doi/full/10.15252/msb.20188746).
