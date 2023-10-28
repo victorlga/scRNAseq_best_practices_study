@@ -20,10 +20,46 @@
 
 4. QC pitfalls & recommendations:
 
-    Perform QC by finding outlier peaks in the number of genes, the count depth and the fraction of mitochondrial reads. Consider these covariates jointly instead of separately.
+    "Perform QC by finding outlier peaks in the number of genes, the count depth and the fraction of mitochondrial reads. Consider these covariates jointly instead of separately.
     
     Be as permissive of QC thresholding as possible, and revisit QC if downstream clustering cannot be interpreted.
     
-    If the distribution of QC covariates differ between samples, QC thresholds should be determined separately for each sample to account for sample quality differences as in Plasschaert et al (2018).
+    If the distribution of QC covariates differ between samples, QC thresholds should be determined separately for each sample to account for sample quality differences as in Plasschaert et al (2018)."
 
 ## Normalization
+
+1. What is normalization in scRNA-seq context?
+
+    "Each count in a count matrix represents the successful capture, reverse transcription and sequencing of a molecule of cellular mRNA (Box 1). Count depths for identical cells can differ due to the variability inherent in each of these steps. Thus, when gene expression is compared between cells based on count data, any difference may have arisen solely due to sampling effects. Normalization addresses this issue by e.g. scaling count data to obtain correct relative gene expression abundances between cells."
+
+2. What is count depth scaling?
+
+    Also known as counts per million (CPM) normalization, it assumes that all cells in the dataset initially contained an equal number (generally, 1M) of mRNA molecules and count depth differences arise only due to sampling. This is the most common normalization method.
+
+3. What is downsampling protocol? (How to properly downsample? How can I stratify?)
+
+    The process of randomly sampling reads or counts from the data to leave all cells with a prespecified number of counts or fewer.
+
+4, What is high-count filtering CPM?
+
+
+
+5. What is Scran's normalization method?
+
+
+
+6. What are non-linear normalization methods?
+
+
+
+7. Why should apply log(x+1)-transformations?
+
+    "Firstly, distances between log-transformed expression values represent log fold changes, which are the canonical way to measure changes in expression. Secondly, log transformation mitigates (but does not remove) the mean–variance relationship in single-cell data (Brennecke et al, 2013). Finally, log transformation reduces the skewness of the data to approximate the assumption of many downstream analysis tools that the data are normally distributed."
+
+8. Normalization pitfalls & recommendations:
+
+    We recommend scran for normalization of non-full-length datasets. An alternative is to evaluate normalization approaches via scone especially for plate-based datasets. Full-length scRNA-seq protocols can be corrected for gene length using bulk methods.
+    
+    There is no consensus on scaling genes to 0 mean and unit variance. We prefer not to scale gene expression.
+    
+    Normalized data should be log(x+1)-transformed for use with downstream analysis methods that assume data are normally distributed.
