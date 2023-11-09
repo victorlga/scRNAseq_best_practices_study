@@ -1,4 +1,4 @@
-## General
+# Prepocessing
 
 1. What is demultiplexing? (?????????)
 
@@ -7,6 +7,10 @@
 2. What are count matrices? (???????? Each row is a gene, each column is a barcode, its value is the number of reads corresponding to that gene in that barcode.)
 
     Count matrices are matrices that contain the number of reads corresponding to each gene in each cell. They are often used as input for downstream analysis.
+
+## Stages of pre-processed data
+
+![DR](preprocess_stages_table.png)
 
 ## Quality control
 
@@ -96,6 +100,4 @@
     Data integration and batch correction should be performed by different methods. Data integration tools may over-correct simple batch effects.
 
     Users should be cautious of signals found only after expression recovery. Exploratory analysis may be best performed without this step.
-
-## Feature selection, dimensionality reduction and visualization
 
