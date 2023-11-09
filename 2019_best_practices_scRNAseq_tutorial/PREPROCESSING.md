@@ -40,6 +40,7 @@
 
     The process of randomly sampling reads or counts from the data to leave all cells with a prespecified number of counts or fewer.
 
+
 4, What is high-count filtering CPM?
 
 
@@ -63,3 +64,38 @@
     There is no consensus on scaling genes to 0 mean and unit variance. We prefer not to scale gene expression.
     
     Normalized data should be log(x+1)-transformed for use with downstream analysis methods that assume data are normally distributed.
+
+## Data correction and integration
+
+1. What is the most common biological data correction?
+    
+    To remove the effects of the cell cycle on the transcriptome. A simple linear regression between cell cycle scores and gene expression is often used to remove these effects. The residual between observed gene expression and the predicted gene expression is substrated from the observed gene expression to obtain the corrected gene expression.
+
+2. What are the techinical effects that may need to be corrected?
+
+    The most common technical effects that need to be corrected are batch effects, which are systematic differences in gene expression between samples that are not due to biological differences. These can arise due to differences in sample processing, sequencing or other experimental conditions. Batch effects can be corrected by regressing out the effect of the batch on gene expression. This is often done by including the batch as a covariate in a linear model and subtracting the residual from the observed gene expression.
+
+3. What is the difference between data integration and batch correction?
+
+    "Correcting for batch effects between samples or cells in the same experiment is the classical scenario known as batch correction from bulk RNA-seq. We distinguish this from the integration of data from multiple experiments, which we call data integration."
+
+4. What is dropout? How expression recovery can help?
+
+    Dropout is when a gene is not detected in a cell due to low expression or technical reasons. Expression recovery is the process of imputing the expression of a gene in a cell that did not detect it. This is often done by using the expression of the gene in other cells as a proxy for the expression of the gene in the cell of interest.
+
+5. Data correction and integration pitfalls and recommendations:
+
+    Regress out biological covariates only for trajectory inference and if other biological processes of interest are not masked by the regressed out biological covariate.
+
+    Regress out technical and biological covariates jointly rather than serially.
+    
+    Plate-based dataset pre-processing may require regressing out counts, normalization via non-linear normalization methods or downsampling.
+
+    We recommend performing batch correction via ComBat when cell type and state compositions between batches are consistent
+
+    Data integration and batch correction should be performed by different methods. Data integration tools may over-correct simple batch effects.
+
+    Users should be cautious of signals found only after expression recovery. Exploratory analysis may be best performed without this step.
+
+## Feature selection, dimensionality reduction and visualization
+
